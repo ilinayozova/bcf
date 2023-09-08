@@ -269,6 +269,8 @@ List bcfoverparRcppClean(NumericVector y_, NumericVector z_,
   NumericVector bsd_post(nd);
   NumericMatrix m_post(nd,n);
   NumericMatrix yhat_post(nd,n);
+  NumericVector mybscale1(nd);
+  NumericVector mybscale0(nd);
   NumericMatrix b_post(nd,n);
   NumericMatrix b_est_post(nd,n_mod_est);
   arma::mat gamma_post(nd,gamma.n_elem);
@@ -602,6 +604,9 @@ List bcfoverparRcppClean(NumericVector y_, NumericVector z_,
       msd_post(save_ctr) = fabs(mscale)*con_sd;
       bsd_post(save_ctr) = fabs(bscale1-bscale0)*mod_sd;
 
+      mybscale1(save_ctr) = bscale1;
+	    mybscale0(save_ctr) = bscale0;
+      
       gamma_post.row(save_ctr) = (diagmat(random_var_ix*eta)*gamma).t();
       random_var_post.row(save_ctr) = (sqrt( eta % eta % random_var)).t();
 
@@ -637,7 +642,7 @@ List bcfoverparRcppClean(NumericVector y_, NumericVector z_,
   treef.close();
 
   return(List::create(_["yhat_post"] = yhat_post, _["b_post"] = b_post, _["b_est_post"] = b_est_post,  _["m_post"] = m_post,  
-                      _["sigma"] = sigma_post, _["msd"] = msd_post, _["bsd"] = bsd_post,
+                      _["bscale1"] = mybscale1, _["bscale0"] = mybscale0, _["sigma"] = sigma_post, _["msd"] = msd_post, _["bsd"] = bsd_post,
                       _["gamma"] = gamma_post, _["random_var_post"] = random_var_post
   ));
 }
