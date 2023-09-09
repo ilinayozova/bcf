@@ -267,7 +267,7 @@ bcf <- function(y, z, x_control, x_moderate=x_control, pihat,
   #B0 = fit$b0
   #EYs = fit$post_yhat
 
-  
+  ac = fitbcf$m_post[,order(perm)
   Tm = fitbcf$b_post[,order(perm)] * (1.0/ (fitbcf$bscale1 - fitbcf$bscale0))
   Tc = ac * (1.0/fitbcf$msd)
 
@@ -275,7 +275,7 @@ bcf <- function(y, z, x_control, x_moderate=x_control, pihat,
   #                     _["sigma"] = sigma_post, _["msd"] = msd_post, _["bsd"] = bsd_post,
   #                     _["gamma"] = gamma_post, _["random_var_post"] = random_var_post
 
-  m_post  = muy + sdy*(Tc*fitbcf$msd + Tm*fitbcf$bscale0)
+  mu_post  = muy + sdy*(Tc*fitbcf$msd + Tm*fitbcf$bscale0)
   tau_post = sdy*fitbcf$b_post[,order(perm)]
   #yhat_post = muy + sdy*fitbcf$m_post
   #yhat_post[,z==1] = yhat_post[,z==1] + fitbcf$b_post
@@ -285,7 +285,7 @@ bcf <- function(y, z, x_control, x_moderate=x_control, pihat,
 
   list(sigma = sdy*fitbcf$sigma,
        yhat = muy + sdy*fitbcf$yhat_post[,order(perm)],
-       mu  = m_post,
+       mu  = mu_post,
        tau = tau_post,
        mu_scale = fitbcf$msd*sdy,
        tau_scale = fitbcf$bsd*sdy,
