@@ -601,8 +601,8 @@ List bcfoverparRcppClean(NumericVector y_, NumericVector z_,
     if( ((i>=burn) & (i % thin==0)) )  {
       //for(size_t j=0;j<m;j++) treef << t[j] << endl;
 
-      msd_post(save_ctr) = fabs(mscale)*con_sd;
-      bsd_post(save_ctr) = fabs(bscale1-bscale0)*mod_sd;
+      msd_post(save_ctr) = mscale;
+      bsd_post(save_ctr) = bscale1-bscale0;
 
       mybscale1(save_ctr) = bscale1;
 	    mybscale0(save_ctr) = bscale0;
