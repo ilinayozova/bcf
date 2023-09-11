@@ -263,17 +263,6 @@ bcf <- function(y, z, x_control, x_moderate=x_control, pihat,
                         tempdir(), status_interval = update_interval,
                         use_mscale = use_muscale, use_bscale = use_tauscale, b_half_normal = TRUE)
 
-  #B = drop(fit$post_B)
-  #B0 = fit$b0
-  #EYs = fit$post_yhat
-
-
-
-  #return(List::create(_["m_post"] = m_post, _["b_post"] = b_post, _["b_est_post"] = b_est_post,
-  #                     _["sigma"] = sigma_post, _["msd"] = msd_post, _["bsd"] = bsd_post,
-  #                     _["gamma"] = gamma_post, _["random_var_post"] = random_var_post
-
-
 
     ac = fitbcf$m_post[,order(perm)]
 
@@ -285,13 +274,13 @@ bcf <- function(y, z, x_control, x_moderate=x_control, pihat,
 
     mu_post  = muy + sdy*(Tc*fitbcf$msd + Tm*fitbcf$bscale0)
                           
-return(  list(sigma = sdy*fitbcf$sigma,
+    list(sigma = sdy*fitbcf$sigma,
        yhat = muy + sdy*fitbcf$yhat_post[,order(perm)],
-       mu  = tau_post,
+       mu  = mu_post,
        tau = tau_post,
        mu_scale = fitbcf$msd*sdy,
        tau_scale = fitbcf$bsd*sdy,
        perm = perm
   )
-)
+
 }
