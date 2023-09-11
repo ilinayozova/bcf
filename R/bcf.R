@@ -276,8 +276,8 @@ bcf <- function(y, z, x_control, x_moderate=x_control, pihat,
                           
     list(sigma = sdy*fitbcf$sigma,
        yhat = muy + sdy*fitbcf$yhat_post[,order(perm)],
-       mu  = mu_post,
        tau = tau_post,
+       mu  = tau_post,
        mu_scale = fitbcf$msd*sdy,
        tau_scale = fitbcf$bsd*sdy,
        perm = perm
