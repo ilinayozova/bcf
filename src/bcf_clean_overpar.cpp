@@ -641,7 +641,7 @@ List bcfoverparRcppClean(NumericVector y_, NumericVector z_,
 
   treef.close();
 
-  return(List::create(_["yhat_post"] = yhat_post, _["b_post"] = b_post, _["b_est_post"] = b_est_post,  _["m_post"] = m_post,  
+  return(List::create(_["yhat_post"] = yhat_post, _["b_post"] = b_post, _["b_est_post"] = b_est_post,  _["mmm_post"] = m_post,  
                       _["bscale1"] = mybscale1, _["bscale0"] = mybscale0, _["sigma"] = sigma_post, _["msd"] = msd_post, _["bsd"] = bsd_post,
                       _["gamma"] = gamma_post, _["random_var_post"] = random_var_post
   ));
