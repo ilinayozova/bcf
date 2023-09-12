@@ -265,7 +265,7 @@ bcf <- function(y, z, x_control, x_moderate=x_control, pihat,
 
 
     #ac = fitbcf$m_post[,order(perm)]
-                           ac = fitbcf$m_post
+                           ac = fitbcf$msd
 
     Tm = fitbcf$b_post[,order(perm)] * (1.0/ (fitbcf$bscale1 - fitbcf$bscale0))
 
