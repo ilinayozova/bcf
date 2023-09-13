@@ -267,7 +267,7 @@ List bcfoverparRcppClean(NumericVector y_, NumericVector z_,
   NumericVector sigma_post(nd);
   NumericVector msd_post(nd);
   NumericVector bsd_post(nd);
-  NumericMatrix m_posterior(nd,n);
+  NumericMatrix mpost(nd,n);
   NumericMatrix yhat_post(nd,n);
   NumericVector mybscale1(nd);
   NumericVector mybscale0(nd);
@@ -612,7 +612,7 @@ List bcfoverparRcppClean(NumericVector y_, NumericVector z_,
 
       sigma_post(save_ctr) = sigma;
       for(size_t k=0;k<n;k++) {
-        m_posterior(save_ctr, k) = allfit_con[k];
+        mpost(save_ctr, k) = allfit_con[k];
         yhat_post(save_ctr, k) = allfit_con[k];
       }
       for(size_t k=0;k<n;k++) {
@@ -641,7 +641,7 @@ List bcfoverparRcppClean(NumericVector y_, NumericVector z_,
 
   treef.close();
 
-  return(List::create(_["yhat_post"] = yhat_post, _["mpost"] = m_posterior, _["b_post"] = b_post, _["b_est_post"] = b_est_post,  
+  return(List::create(_["yhat_post"] = yhat_post, _["mpost"] = mpost, _["b_post"] = b_post, _["b_est_post"] = b_est_post,  
                       _["bscale1"] = mybscale1, _["bscale0"] = mybscale0, _["sigma"] = sigma_post, _["msd"] = msd_post, _["bsd"] = bsd_post,
                       _["gamma"] = gamma_post, _["random_var_post"] = random_var_post
   ));
