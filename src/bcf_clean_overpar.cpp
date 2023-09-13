@@ -613,7 +613,7 @@ List bcfoverparRcppClean(NumericVector y_, NumericVector z_,
       sigma_post(save_ctr) = sigma;
       for(size_t k=0;k<n;k++) {
         m_post(save_ctr, k) = allfit_con[k];
-        yhat_post(save_ctr, k) = allfit[k];
+        yhat_post(save_ctr, k) = allfit_con[k];
       }
       for(size_t k=0;k<n;k++) {
         double bscale = (k<ntrt) ? bscale1 : bscale0;
